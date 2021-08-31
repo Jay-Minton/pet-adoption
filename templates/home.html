@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Adoption</title>
+</head>
+<body>
+    <h1>Pets</h1>
+    {% for pet in pets %}
+    <div>
+        <img src="{{pet.photo_url}}">
+        <p><a href="{{ url_for('edit_pet', id=pet.id) }}">{{pet.name}}</a>
+        {% if pet.available %} 
+            <b>is available!</b>
+        {% endif %}
+        </p>
+    </div>
+    {% endfor %}
+    <a href="{{ url_for('add_pet') }}">Add a Pet</a>
+</body>
+</html>
